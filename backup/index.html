@@ -1,0 +1,242 @@
+<html>
+<head>
+<title>
+The C Library Reference Guide
+</title>
+<!-- Changed by: eric huss, 12-Mar-1997 -->
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<center>
+<h1>The C Library Reference Guide</h1>
+<i>by Eric Huss</i><br>
+&#169; Copyright 1997 Eric Huss<br>
+<br>
+Release 1
+</center>
+<hr size=5>
+<pre>
+<b>Introduction</b>
+
+1.   <b>Language</b>
+     1.1  <a href="1.1.html">Characters</a>
+          1.1.1     Trigraph Characters
+          1.1.2     Escape Sequences
+          1.1.3     Comments
+     1.2  <a href="1.2.html">Identifiers</a>
+          1.2.1     Keywords
+          1.2.2     Variables
+          1.2.3     Enumerated Tags
+          1.2.4     Arrays
+          1.2.5     Structures and Unions
+          1.2.6     Constants
+          1.2.7     Strings
+          1.2.8     sizeof Keyword
+     1.3  <a href="1.3.html">Functions</a>
+          1.3.1     Definition
+          1.3.2     Program Startup
+     1.4  <a href="1.4.html">References</a>
+          1.4.1     Pointers and the Address Operator
+          1.4.2     Typecasting
+     1.5  <a href="1.5.html">Operators</a>
+          1.5.1     Postfix
+          1.5.2     Unary and Prefix
+          1.5.3     Normal
+          1.5.4     Boolean
+          1.5.5     Assignment
+          1.5.6     Precedence
+     1.6  <a href="1.6.html">Statements</a>
+          1.6.1     if
+          1.6.2     switch
+          1.6.3     while   
+          1.6.4     do
+          1.6.5     for
+          1.6.6     goto  
+          1.6.7     continue
+          1.6.8     break
+          1.6.9     return 
+     1.7  <a href="1.7.html">Preprocessing Directives</a>
+          1.7.1     #if, #elif, #else, #endif
+          1.7.2     #define, #undef, #ifdef, #ifndef
+          1.7.3     #include
+          1.7.4     #line
+          1.7.5     #error
+          1.7.6     #pragma
+          1.7.7     Predefined Macros
+2.   <b>Library</b>
+     2.1  <a href="2.1.html">assert.h</a>
+          2.1.1     assert
+     2.2  <a href="2.2.html">ctype.h</a>
+          2.2.1     is... Functions
+          2.2.2     to... Functions
+     2.3  <a href="2.3.html">errno.h  </a> 
+          2.3.1     EDOM
+          2.3.2     ERANGE
+          2.3.3     errno   
+     2.4  <a href="2.4.html">float.h</a>
+          2.4.1     Defined Values
+     2.5  <a href="2.5.html">limits.h</a>
+          2.5.1     Defined Values
+     2.6  <a href="2.6.html">locale.h</a>
+          2.6.1     Variables and Definitions
+          2.6.2     setlocale
+          2.6.3     localeconv
+     2.7  <a href="2.7.html">math.h</a>
+          2.7.1     Error Conditions
+          2.7.2     Trigonometric Functions
+               2.7.2.1   acos
+               2.7.2.2   asin
+               2.7.2.3   atan   
+               2.7.2.4   atan2
+               2.7.2.5   cos
+               2.7.2.6   cosh
+               2.7.2.7   sin
+               2.7.2.8   sinh 
+               2.7.2.9   tan  
+               2.7.2.10  tanh
+          2.7.3     Exponential, Logarithmic, and Power Functions
+               2.7.3.1   exp
+               2.7.3.2   frexp
+               2.7.3.3   ldexp
+               2.7.3.4   log 
+               2.7.3.5   log10
+               2.7.3.6   modf
+               2.7.3.7   pow
+               2.7.3.8   sqrt
+          2.7.4     Other Math Functions
+               2.7.4.1   ceil
+               2.7.4.2   fabs
+               2.7.4.3   floor 
+               2.7.4.4   fmod
+     2.8  <a href="2.8.html">setjmp.h</a>
+          2.8.1     Variables and Definitions
+          2.8.2     setjmp
+          2.8.3     longjmp
+     2.9  <a href="2.9.html">signal.h</a>
+          2.9.1     Variables and Definitions
+          2.9.2     signal
+          2.9.3     raise
+     2.10 <a href="2.10.html">stdarg.h</a>
+          2.10.1    Variables and Definitions
+          2.10.2    va_start
+          2.10.3    va_arg
+          2.10.4    va_end
+     2.11 <a href="2.11.html">stddef.h</a>
+          2.11.1    Variables and Definitions
+     2.12 <a href="2.12.html">stdio.h</a>
+          2.12.1    Variables and Definitions
+          2.12.2    Streams and Files
+          2.12.3    File Functions
+               2.12.3.1  clearerr  
+               2.12.3.2  fclose
+               2.12.3.3  feof
+               2.12.3.4  ferror
+               2.12.3.5  fflush
+               2.12.3.6  fgetpos
+               2.12.3.7  fopen
+               2.12.3.8  fread
+               2.12.3.9  freopen
+               2.12.3.10 fseek
+               2.12.3.11 fsetpos
+               2.12.3.12 ftell
+               2.12.3.13 fwrite
+               2.12.3.14 remove
+               2.12.3.15 rename
+               2.12.3.16 rewind
+               2.12.3.17 setbuf
+               2.12.3.18 setvbuf
+               2.12.3.19 tmpfile
+               2.12.3.20 tmpnam
+          2.12.4    Formatted I/O Functions
+               2.12.4.1  ...printf Functions
+               2.12.4.2  ...scanf Functions
+          2.12.5    Character I/O Functions
+               2.12.5.1  fgetc     
+               2.12.5.2  fgets 
+               2.12.5.3  fputc
+               2.12.5.4  fputs 
+               2.12.5.5  getc  
+               2.12.5.6  getchar
+               2.12.5.7  gets 
+               2.12.5.8  putc 
+               2.12.5.9  putchar
+               2.12.5.10 puts 
+               2.12.5.11 ungetc 
+          2.12.7    Error Functions
+               2.12.7.1  perror
+     2.13 <a href="2.13.html">stdlib.h</a>
+          2.13.1    Variables and Definitions
+          2.13.2    String Functions
+               2.13.2.1  atof
+               2.13.2.2  atoi
+               2.13.2.3  atol
+               2.13.2.4  strtod
+               2.13.2.5  strtol
+               2.13.2.6  strtoul
+          2.13.3    Memory Functions
+               2.13.3.1  calloc
+               2.13.3.2  free      
+               2.13.3.3  malloc
+               2.13.3.4  realloc
+          2.13.4    Environment Functions
+               2.13.4.1  abort 
+               2.13.4.2  atexit 
+               2.13.4.3  exit 
+               2.13.4.4  getenv
+               2.13.4.5  system 
+          2.13.5    Searching and Sorting Functions
+               2.13.5.1  bsearch
+               2.13.5.2  qsort
+          2.13.6    Math Functions  
+               2.13.6.1  abs
+               2.13.6.2  div
+               2.13.6.3  labs  
+               2.13.6.4  ldiv
+               2.13.6.5  rand
+               2.13.6.6  srand
+          2.13.7    Multibyte Functions
+               2.13.7.1  mblen 
+               2.13.7.2  mbstowcs
+               2.13.7.3  mbtowc
+               2.13.7.4  wcstombs
+               2.13.7.5  wctomb
+     2.14 <a href="2.14.html">string.h</a>
+          2.14.1    Variables and Definitions
+          2.14.2    memchr
+          2.14.3    memcmp
+          2.14.4    memcpy
+          2.14.5    memmove
+          2.14.5    memmove
+          2.14.6    memset
+          2.14.7    strcat
+          2.14.8    strncat
+          2.14.9    strchr
+          2.14.10   strcmp
+          2.14.11   strncmp
+          2.14.12   strcoll
+          2.14.13   strcpy
+          2.14.14   strncpy
+          2.14.15   strcspn
+          2.14.16   strerror
+          2.14.17   strlen
+          2.14.18   strpbrk
+          2.14.19   strrchr
+          2.14.20   strspn
+          2.14.21   strstr
+          2.14.22   strtok
+          2.14.23   strxfrm
+     2.15 <a href="2.15.html">time.h </a> 
+          2.15.1    Variables and Definitions
+          2.15.2    asctime
+          2.15.3    clock 
+          2.15.4    ctime 
+          2.15.5    difftime
+          2.15.6    gmtime
+          2.15.7    localtime
+          2.15.8    mktime 
+          2.15.9    strftime
+          2.15.10   time  
+<b>Appendix A</b>
+	<a href="a.html">ASCII Chart</a>
+</pre>
+</body>
+</html>
